@@ -1,124 +1,169 @@
-/* a minimalist set of CSS resets */
+/******************************************************************************
+START Glitch hello-app default styles
 
-/* default to border-box */
-html {
+The styles in this section do some minimal CSS resets, set default fonts and 
+colors, and handle the layout for our footer and "Remix on Glitch" button. If
+you're new to CSS they may seem a little complicated, but you can scroll down
+to this section's matching END comment to see page-specific styles.
+******************************************************************************/
+
+/* 
+  The style rules specify elements by type and by attributes such as class and ID
+  Each section indicates an element or elements, then lists the style properties to apply
+  See if you can cross-reference the rules in this file with the elements in index.html
+*/
+
+/* Import fonts */
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+
+/* Our default values set as CSS variables */
+:root {
+  --color-bg: #eee;
+  --color-text-main: #000000;
+  --color-primary: #ffff00;
+  --wrapper-height: 87vh;
+  --image-max-width: 300px;
+  --image-margin: 3rem;
+  --font-family: "Ubuntu";
+  --font-family-header: "Ubuntu";
+}
+
+/* Basic page style resets */
+* {
   box-sizing: border-box;
-  font-size: 36px;
 }
 
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
+[hidden] {
+  display: none !important;
 }
 
-/* adjust typography defaults */
-body {
-  margin: 1rem;
-  font-family: sans-serif;
-  line-height: 4.5;
+/******************************************************************************
+END Glitch hello-app default styles
+******************************************************************************/
+
+body,
+html {
+  font-family: Ubuntu;
+  background-color: var(--color-bg);
+  background-image: url("./typing.jpeg");
 }
 
-/* images and videos max out at full width */
-img,
-video {
-  height: auto;
-  max-width: 100%;
+a:link, a:visited {
+    color: #000;
+    text-decoration: none;
 }
 
-.flex-container {
+a:active,
+a:hover {
+    color: #777;
+}
+
+/* Page structure */
+.wrapper {
+  min-height: var(--wrapper-height);
+  display: grid;
+  place-items: center;
+  margin: 0 1rem;
+}
+.content {
   display: flex;
-
-  background-color: #bbdefb;
-  height: 100%;
-  padding: 35px;
-  gap: 35px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.item1 {
-  background: rgb(131, 58, 180);
-  background: linear-gradient(
-    90deg,
-    rgba(131, 58, 180, 1) 0%,
-    rgba(253, 29, 29, 1) 50%,
-    rgba(252, 176, 69, 1) 100%
-  );
-  border: 3px solid #ffcc80;
-  border-radius: 5px;
-  padding: 8px;
+/* Very light scaling for our illustration */
+.title {
+  color: #2800ff;
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 100px;
+  line-height: 105%;
+  margin: 0;
 }
 
-.item1:hover {
-  color: white;
-  transform: scale(1.4);
+/* Very light scaling for our illustration */
+.illustration {
+  max-width: 100%;
+  max-height: var(--image-max-width);
+  margin-top: var(--image-margin);
 }
 
-.item2 {
-  background: rgb(34, 193, 195);
-  background: linear-gradient(
-    0deg,
-    rgba(34, 193, 195, 1) 0%,
-    rgba(253, 187, 45, 1) 100%
-  );
-  border: 3px solid #ffcc80;
-  border-radius: 5px;
-  padding: 8px;
+/* Instructions */
+.instructions {
+  margin: 1rem auto 0;
 }
 
-.item2:hover {
-  color: white;
-  transform: scale(1.4);
+/* Button - Add it from the README instructions */
+button,
+input {
+  font-family: inherit;
+  font-size: 100%;
+  background: #ffffff;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  transition: 500ms;
 }
 
-.item3 {
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 9, 121, 1) 35%,
-    rgba(0, 212, 255, 1) 100%
-  );
-  border: 3px solid #ffcc80;
-  border-radius: 5px;
-  padding: 8px;
+/* Subheading */
+h2 {
+  color: #183a1d;
 }
 
-.item3:hover {
-  color: white;
-  transform: scale(1.4);
+/* Interactive image */
+.illustration:active {
+  transform: translateY(5px);
 }
 
-.item4 {
-  background: rgb(131, 58, 180);
-  background: radial-gradient(
-    circle,
-    rgba(131, 58, 180, 1) 0%,
-    rgba(253, 29, 29, 1) 50%,
-    rgba(252, 176, 69, 1) 100%
-  );
-  border: 3px solid #ffcc80;
-  border-radius: 5px;
-  padding: 8px;
+/* Button dip
+- Toggling this class on and off will move it down and up again
+- The button transition property above determines the speed of the translate (500ms)
+*/
+.dipped {
+  transform: translateY(5px);
 }
 
-.item4:hover {
-  color: white;
-  transform: scale(1.4);
+#Name {
+  font-family: "Ubuntu", sans-serif;
+  opacity: 0.7;
+  background-color: #eee;
+  box-sizing: border-box;
+  width: 98%;
+  padding: 30px;
+  border: 1px solid #183a1d;
+  margin: 10px;
 }
 
-.item5 {
-  background: rgb(34, 193, 195);
-  background: radial-gradient(
-    circle,
-    rgba(34, 193, 195, 1) 0%,
-    rgba(253, 187, 45, 1) 100%
-  );
-  border: 3px solid #ffcc80;
-  border-radius: 5px;
-  padding: 8px;
+#Education {
+  opacity: 0.7;
+  background-color: #fff;
+  box-sizing: border-box;
+  width: 98%;
+  padding: 30px;
+  border: 1px solid #183a1d;
+  margin: 10px;
 }
 
-.item5:hover {
-  color: white;
-  transform: scale(1.4);
+#Employment {
+  opacity: 0.7;
+  background-color: #fff;
+  box-sizing: border-box;
+  width: 98%;
+  padding: 30px;
+  border: 1px solid #183a1d;
+  margin: 10px;
 }
+
+#References {
+  opacity: 0.7;
+  background-color: #fff;
+  box-sizing: border-box;
+  width: 98%;
+  padding: 30px;
+  border: 1px solid #183a1d;
+  margin: 10px;
+}
+
