@@ -45,7 +45,7 @@ body,
 html {
   font-family: Ubuntu;
   background-color: var(--color-bg);
-  background-image: url("./typing.jpeg");
+  background-image: url("/typing.jpeg");
 }
 
 a:link, a:visited {
